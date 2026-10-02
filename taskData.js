@@ -5,7 +5,7 @@ export const SUBJECTS = [
   "Statistics",
 ];
 
-// Generate a deadline relative to today
+// deadline
 export function dateAfter(days) {
   const d = new Date();
   d.setDate(d.getDate() + days);
@@ -13,7 +13,7 @@ export function dateAfter(days) {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
-// Validate YYYY-MM-DD input
+// validate yyyy-mm-dd input
 export function validDate(value) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
 
@@ -27,7 +27,7 @@ export function validDate(value) {
   );
 }
 
-// Initial assignments
+// sample assignments
 export const sampleTasks = [
   {
     id: "1",
@@ -56,7 +56,7 @@ export const sampleTasks = [
   {
     id: "4",
     title: "Statistics practice",
-    subject: "Statistics",
+    subject: "Data Mining",
     deadline: dateAfter(1),
     notes: "Mean, median, and mode",
     done: true,
