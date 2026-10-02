@@ -24,6 +24,9 @@ export default function App() {
   const add = (task) => {
     setTasks((old) => [task, ...old]);
   };
+  const deleteTask = (id) => {
+    setTasks((old) => old.filter((task) => task.id !== id));
+  };
 
   return (
     <SafeAreaProvider>
@@ -45,7 +48,12 @@ export default function App() {
 
           <Stack.Screen name="Details">
             {(props) => (
-              <DetailsScreen {...props} tasks={tasks} onToggle={toggle} />
+              <DetailsScreen
+                {...props}
+                tasks={tasks}
+                onToggle={toggle}
+                onDelete={deleteTask}
+              />
             )}
           </Stack.Screen>
 

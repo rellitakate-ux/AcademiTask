@@ -108,4 +108,18 @@ export const s = StyleSheet.create({
     borderWidth: 1,
   },
   subjectGrid: { flexDirection: "row", flexWrap: "wrap", gap: 9 },
+
+  deleteButton: {
+    backgroundColor: "#DC3545",
+    padding: 15,
+    borderRadius: 12,
+    alignItems: "center",
+    marginTop: 5,
+  },
+
+  deleteButtonText: {
+    color: "white",
+    fontWeight: "700",
+    fontSize: 15,
+  },
 });
