@@ -8,10 +8,8 @@ import {
   Alert,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
 import { s } from "../globalStyle";
 import { SUBJECTS, dateAfter, validDate } from "../taskData";
-
 import Header from "../components/Header";
 import PrimaryButton from "../components/PrimaryButton";
 
@@ -21,7 +19,7 @@ export default function AddScreen({ navigation, onAdd }) {
   const [deadline, setDeadline] = useState(dateAfter(1));
   const [notes, setNotes] = useState("");
 
-  // Validate inputs and save assignment
+  // validate inputs and save assignments
   const save = () => {
     if (!title.trim()) {
       return Alert.alert("Missing title", "Enter an assignment title.");
