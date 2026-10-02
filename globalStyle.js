@@ -96,7 +96,7 @@ export const s = StyleSheet.create({
     padding: 20,
     borderRadius: 15,
     marginVertical: 18,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: "#aac4ef",
   },
   input: {
