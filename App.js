@@ -11,6 +11,7 @@ import DetailsScreen from "./screens/DetailsScreen";
 
 const Stack = createNativeStackNavigator();
 
+// main app component
 export default function App() {
   const [tasks, setTasks] = useState(sampleTasks);
   const toggle = (id) => {
