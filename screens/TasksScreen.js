@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { View, Text, Pressable, ScrollView, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
 import { s } from "../globalStyle";
 import { SUBJECTS } from "../taskData";
-
 import Header from "../components/Header";
 import PrimaryButton from "../components/PrimaryButton";
 import TaskRow from "../components/TaskRow";
@@ -13,7 +11,7 @@ export default function TasksScreen({ navigation, tasks, onToggle }) {
   const [subject, setSubject] = useState("All");
   const [earliest, setEarliest] = useState(true);
 
-  // Filter and sort tasks
+  // filter and sorting
   const visible = tasks
     .filter((t) => subject === "All" || t.subject === subject)
     .sort((a, b) =>
