@@ -19,7 +19,7 @@ export default function HomeScreen({ navigation, tasks, onToggle }) {
       <Header title="AcademiTask" />
 
       <ScrollView contentContainerStyle={s.content}>
-        <Text style={s.hero}>Stay on top of your assignments.</Text>
+        <Text style={s.hero}>Plan Smarter, Study Better.</Text>
 
         <Text style={s.subtitle}>
           Track deadlines and finish tasks one by one.
