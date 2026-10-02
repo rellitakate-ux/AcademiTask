@@ -23,7 +23,7 @@ export const s = StyleSheet.create({
     padding: 15,
     borderRadius: 19,
     borderWidth: 1,
-    borderColor: "#c4d7f5",
+    borderColor: "#aac4ef",
     backgroundColor: "white",
     alignItems: "center",
   },
@@ -96,6 +96,8 @@ export const s = StyleSheet.create({
     padding: 20,
     borderRadius: 15,
     marginVertical: 18,
+    borderWidth: 1,
+    borderColor: "#aac4ef",
   },
   input: {
     backgroundColor: "white",
