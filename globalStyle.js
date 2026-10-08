@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 const NAVY = "#182C4D";
 const BLUE = "#4775E7";
 
-export const s = StyleSheet.create({
+export const styles = StyleSheet.create({
   page: { flex: 1, backgroundColor: "#F4F7FC" },
 
   header: {

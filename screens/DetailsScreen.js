@@ -1,7 +1,7 @@
 import { View, Text, Pressable, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { s } from "../globalStyle";
+import { styles } from "../globalStyle";
 import Header from "../components/Header";
 import PrimaryButton from "../components/PrimaryButton";
 
@@ -12,7 +12,7 @@ export default function DetailsScreen({
   onToggle,
   onDelete,
 }) {
-  const task = tasks.find((t) => t.id === route.params?.taskId);
+  const task = tasks.find((task) => task.id === route.params?.taskId);
 
   const handleDelete = () => {
     Alert.alert(
@@ -35,30 +35,30 @@ export default function DetailsScreen({
     );
   };
   return (
-    <SafeAreaView style={s.page} edges={["top", "bottom"]}>
+    <SafeAreaView style={styles.page} edges={["top", "bottom"]}>
       <Header title="Assignment Details" navigation={navigation} back />
 
-      <View style={s.content}>
+      <View style={styles.content}>
         {!task ? (
           <Text>Task not found.</Text>
         ) : (
           <>
-            <Text style={s.hero}>{task.title}</Text>
+            <Text style={styles.hero}>{task.title}</Text>
 
-            <View style={s.detailCard}>
-              <Text style={s.fieldLabel}>SUBJECT</Text>
-              <Text style={s.fieldValue}>{task.subject}</Text>
+            <View style={styles.detailCard}>
+              <Text style={styles.fieldLabel}>SUBJECT</Text>
+              <Text style={styles.fieldValue}>{task.subject}</Text>
 
-              <Text style={s.fieldLabel}>DEADLINE</Text>
-              <Text style={s.fieldValue}>{task.deadline}</Text>
+              <Text style={styles.fieldLabel}>DEADLINE</Text>
+              <Text style={styles.fieldValue}>{task.deadline}</Text>
 
-              <Text style={s.fieldLabel}>NOTES</Text>
-              <Text style={s.fieldValue}>
+              <Text style={styles.fieldLabel}>NOTES</Text>
+              <Text style={styles.fieldValue}>
                 {task.notes || "No notes added."}
               </Text>
 
-              <Text style={s.fieldLabel}>STATUS</Text>
-              <Text style={s.fieldValue}>
+              <Text style={styles.fieldLabel}>STATUS</Text>
+              <Text style={styles.fieldValue}>
                 {task.done ? "Completed" : "Pending"}
               </Text>
             </View>
@@ -67,8 +67,8 @@ export default function DetailsScreen({
               label={task.done ? "Mark as Pending" : "Mark as Completed"}
               onPress={() => onToggle(task.id)}
             />
-            <Pressable style={s.deleteButton} onPress={handleDelete}>
-              <Text style={s.deleteButtonText}>Delete Assignment</Text>
+            <Pressable style={styles.deleteButton} onPress={handleDelete}>
+              <Text style={styles.deleteButtonText}>Delete Assignment</Text>
             </Pressable>
           </>
         )}

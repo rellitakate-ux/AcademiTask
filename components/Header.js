@@ -1,16 +1,16 @@
 import { View, Text, Pressable } from "react-native";
-import { s } from "../globalStyle";
+import { styles } from "../globalStyle";
 
 export default function Header({ title, navigation, back = false }) {
   return (
-    <View style={s.header}>
+    <View style={styles.header}>
       {back && (
         <Pressable onPress={() => navigation.goBack()}>
-          <Text style={s.back}>‹ Back</Text>
+          <Text style={styles.back}>‹ Back</Text>
         </Pressable>
       )}
 
-      <Text style={s.headerTitle}>{title}</Text>
+      <Text style={styles.headerTitle}>{title}</Text>
     </View>
   );
 }

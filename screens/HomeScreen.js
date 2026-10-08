@@ -1,7 +1,7 @@
 import { View, Text, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { s } from "../globalStyle";
+import { styles } from "../globalStyle";
 import Header from "../components/Header";
 import PrimaryButton from "../components/PrimaryButton";
 import TaskRow from "../components/TaskRow";
@@ -10,35 +10,35 @@ export default function HomeScreen({ navigation, tasks, onToggle }) {
   const done = tasks.filter((t) => t.done).length;
 
   const upcoming = tasks
-    .filter((t) => !t.done)
-    .sort((a, b) => a.deadline.localeCompare(b.deadline))
+    .filter((task) => !task.done)
+    .sort((taskA, taskB) => taskA.deadline.localeCompare(taskB.deadline))
     .slice(0, 3);
 
   return (
-    <SafeAreaView style={s.page} edges={["top", "bottom"]}>
+    <SafeAreaView style={styles.page} edges={["top", "bottom"]}>
       <Header title="AcademiTask" />
 
-      <ScrollView contentContainerStyle={s.content}>
-        <Text style={s.hero}>Plan Smarter, Study Better.</Text>
+      <ScrollView contentContainerStyle={styles.content}>
+        <Text style={styles.hero}>Plan Smarter, Study Better.</Text>
 
-        <Text style={s.subtitle}>
+        <Text style={styles.subtitle}>
           Track deadlines and finish tasks one by one.
         </Text>
 
-        <View style={s.stats}>
-          <View style={s.stat}>
-            <Text style={s.statNumber}>{tasks.length}</Text>
-            <Text style={s.muted}>Total</Text>
+        <View style={styles.stats}>
+          <View style={styles.stat}>
+            <Text style={styles.statNumber}>{tasks.length}</Text>
+            <Text style={styles.muted}>Total</Text>
           </View>
 
-          <View style={s.stat}>
-            <Text style={s.statNumber}>{tasks.length - done}</Text>
-            <Text style={s.muted}>Pending</Text>
+          <View style={styles.stat}>
+            <Text style={styles.statNumber}>{tasks.length - done}</Text>
+            <Text style={styles.muted}>Pending</Text>
           </View>
 
-          <View style={s.stat}>
-            <Text style={s.statNumber}>{done}</Text>
-            <Text style={s.muted}>Completed</Text>
+          <View style={styles.stat}>
+            <Text style={styles.statNumber}>{done}</Text>
+            <Text style={styles.muted}>Completed</Text>
           </View>
         </View>
 
@@ -52,7 +52,7 @@ export default function HomeScreen({ navigation, tasks, onToggle }) {
           onPress={() => navigation.navigate("Tasks")}
         />
 
-        <Text style={s.sectionTitle}>Upcoming deadlines</Text>
+        <Text style={styles.sectionTitle}>Upcoming deadlines</Text>
 
         {upcoming.length ? (
           upcoming.map((task) => (
@@ -64,7 +64,7 @@ export default function HomeScreen({ navigation, tasks, onToggle }) {
             />
           ))
         ) : (
-          <Text style={s.muted}>Everything is complete. Great work!</Text>
+          <Text style={styles.muted}>Everything is complete. Great work!</Text>
         )}
       </ScrollView>
     </SafeAreaView>

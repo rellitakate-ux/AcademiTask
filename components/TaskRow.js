@@ -1,14 +1,14 @@
 import { View, Text, Pressable } from "react-native";
-import { s } from "../globalStyle";
+import { styles } from "../globalStyle";
 
 export default function TaskRow({ task, navigation, onToggle }) {
   return (
-    <View style={s.taskRow}>
+    <View style={styles.taskRow}>
       <Pressable
         onPress={() => onToggle(task.id)}
-        style={[s.circle, task.done && s.checked]}
+        style={[styles.circle, task.done && styles.checked]}
       >
-        <Text style={s.checkText}>{task.done ? "✓" : ""}</Text>
+        <Text style={styles.checkText}>{task.done ? "✓" : ""}</Text>
       </Pressable>
 
       <Pressable
@@ -19,14 +19,14 @@ export default function TaskRow({ task, navigation, onToggle }) {
           })
         }
       >
-        <Text style={[s.taskTitle, task.done && s.crossed]}>{task.title}</Text>
+        <Text style={[styles.taskTitle, task.done && styles.crossed]}>
+          {task.title}
+        </Text>
 
-        <Text style={s.muted}>
+        <Text style={styles.muted}>
           {task.subject} · Due {task.deadline}
         </Text>
       </Pressable>
-
-      <Text style={s.arrow}>›</Text>
     </View>
   );
 }

@@ -8,7 +8,7 @@ import {
   Alert,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { s } from "../globalStyle";
+import { styles } from "../globalStyle";
 import { SUBJECTS, dateAfter, validDate } from "../taskData";
 import Header from "../components/Header";
 import PrimaryButton from "../components/PrimaryButton";
@@ -45,50 +45,55 @@ export default function AddScreen({ navigation, onAdd }) {
   };
 
   return (
-    <SafeAreaView style={s.page} edges={["top", "bottom"]}>
+    <SafeAreaView style={styles.page} edges={["top", "bottom"]}>
       <Header title="Add Assignment" navigation={navigation} back />
 
-      <ScrollView contentContainerStyle={s.content}>
-        <Text style={s.fieldLabel}>ASSIGNMENT TITLE</Text>
+      <ScrollView contentContainerStyle={styles.content}>
+        <Text style={styles.fieldLabel}>ASSIGNMENT TITLE</Text>
 
         <TextInput
-          style={s.input}
+          style={styles.input}
           placeholder="e.g. Finish React Native activity"
           value={title}
           onChangeText={setTitle}
         />
 
-        <Text style={s.fieldLabel}>SUBJECT</Text>
+        <Text style={styles.fieldLabel}>SUBJECT</Text>
 
-        <View style={s.subjectGrid}>
+        <View style={styles.subjectGrid}>
           {SUBJECTS.map((item) => (
             <Pressable
               key={item}
-              style={[s.chip, subject === item && s.activeChip]}
+              style={[styles.chip, subject === item && styles.activeChip]}
               onPress={() => setSubject(item)}
             >
-              <Text style={[s.chipText, subject === item && s.activeChipText]}>
+              <Text
+                style={[
+                  styles.chipText,
+                  subject === item && styles.activeChipText,
+                ]}
+              >
                 {item}
               </Text>
             </Pressable>
           ))}
         </View>
 
-        <Text style={s.fieldLabel}>DEADLINE (YYYY-MM-DD)</Text>
+        <Text style={styles.fieldLabel}>DEADLINE (YYYY-MM-DD)</Text>
 
         <TextInput
-          style={s.input}
+          style={styles.input}
           placeholder="2026-10-20"
           value={deadline}
           onChangeText={setDeadline}
           autoCapitalize="none"
         />
 
-        <Text style={s.fieldLabel}>NOTES (OPTIONAL)</Text>
+        <Text style={styles.fieldLabel}>NOTES (OPTIONAL)</Text>
 
         <TextInput
           style={[
-            s.input,
+            styles.input,
             {
               minHeight: 105,
               textAlignVertical: "top",

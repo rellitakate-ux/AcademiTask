@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { View, Text, Pressable, ScrollView, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { s } from "../globalStyle";
+import { styles } from "../globalStyle";
 import { SUBJECTS } from "../taskData";
 import Header from "../components/Header";
 import PrimaryButton from "../components/PrimaryButton";
@@ -13,51 +13,59 @@ export default function TasksScreen({ navigation, tasks, onToggle }) {
 
   // filter and sorting
   const visible = tasks
-    .filter((t) => subject === "All" || t.subject === subject)
-    .sort((a, b) =>
+    .filter((task) => subject === "All" || task.subject === subject)
+    .sort((taskA, taskB) =>
       earliest
-        ? a.deadline.localeCompare(b.deadline)
-        : b.deadline.localeCompare(a.deadline),
+        ? taskA.deadline.localeCompare(taskB.deadline)
+        : taskB.deadline.localeCompare(taskA.deadline),
     );
 
   return (
-    <SafeAreaView style={s.page} edges={["top", "bottom"]}>
+    <SafeAreaView style={styles.page} edges={["top", "bottom"]}>
       <Header title="My Assignments" navigation={navigation} back />
 
-      <View style={s.content}>
+      <View style={styles.content}>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           style={{ flexGrow: 0 }}
-          contentContainerStyle={s.filters}
+          contentContainerStyle={styles.filters}
         >
           {["All", ...SUBJECTS].map((name) => (
             <Pressable
               key={name}
-              style={[s.chip, subject === name && s.activeChip]}
+              style={[styles.chip, subject === name && styles.activeChip]}
               onPress={() => setSubject(name)}
             >
-              <Text style={[s.chipText, subject === name && s.activeChipText]}>
+              <Text
+                style={[
+                  styles.chipText,
+                  subject === name && styles.activeChipText,
+                ]}
+              >
                 {name}
               </Text>
             </Pressable>
           ))}
         </ScrollView>
 
-        <Pressable style={s.sortButton} onPress={() => setEarliest(!earliest)}>
-          <Text style={s.sortText}>
+        <Pressable
+          style={styles.sortButton}
+          onPress={() => setEarliest(!earliest)}
+        >
+          <Text style={styles.sortText}>
             Deadline: {earliest ? "Earliest first ↑" : "Latest first ↓"}
           </Text>
         </Pressable>
 
         <FlatList
           data={visible}
-          keyExtractor={(t) => t.id}
+          keyExtractor={(task) => task.id}
           renderItem={({ item }) => (
             <TaskRow task={item} navigation={navigation} onToggle={onToggle} />
           )}
           ListEmptyComponent={
-            <Text style={s.muted}>No tasks in this subject yet.</Text>
+            <Text style={styles.muted}>No tasks in this subject yet.</Text>
           }
         />
 
